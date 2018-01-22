@@ -1,0 +1,121 @@
+<div ng-controller="pivaCtrl">
+
+<div ng-show="rezimDodavanja">
+		<button ng-click="rezimDodavanja = !rezimDodavanja" class="btn btn-primary pull-right">Pretraga</button>
+		<br />
+		<form>
+			<div class="form-group">
+				<label for="nazivNK">Broj mesta</label> <input
+					ng-model="novaPiva.mesto" type="text" class="form-control"
+					id="nazivNK">
+			</div>
+			<div class="form-group">
+				<label for="pisacNK">Cena karte</label> <input
+					ng-model="novaPiva.cena_karte" type="text" class="form-control"
+					id="pisacNK">
+			</div>
+			<div class="form-group">
+				<label for="ISBNNK">Vreme polaska</label> <input
+					ng-model="novaPiva.vreme_polaska" type="text" class="form-control"
+					id="ISBNNK">
+			</div>
+
+			<div class="form-group">
+				<label for="kolicinaNK">Destinacija</label> <input
+					ng-model="novaPiva.destinacija" type="text" class="form-control"
+					id="kolicinaNK">
+			</div>
+			<div class="form-group">
+				<label for="izdavacNK">Preduzetnik</label> <select
+					ng-model="novaPiva.prevoznikId" class="form-control" id="izdavacNK">
+					<option ng-repeat="i in pivare" value="{{i.id}}">{{i.naziv}}</option>
+				</select>
+			</div>
+			<button ng-click="dodaj()" type="button" class="btn btn-primary">Dodaj</button>
+		</form>
+	</div>
+	<div ng-show="!rezimDodavanja">
+		<button ng-click="rezimDodavanja = !rezimDodavanja" class="btn btn-primary pull-right">Dodavanje</button>
+		<br />
+		<form>
+			<div class="form-group">
+				<label for="nazivTK">Broj mesta</label> <input
+					ng-model="trazenaPiva.mesto" type="text" class="form-control"
+					id="nazivTK">
+			</div>
+			<div class="form-group">
+				<label for="maxKTK">Maksimalni </label> <input
+					ng-model="trazenaPiva.maxMesta" type="text" class="form-control"
+					id="maxKTK">
+			</div>
+			<div class="form-group">
+				<label for="pivaraNaziv">Prevoznik Naziv</label> <input
+					ng-model="trazenaPiva.prevoznikNaziv" type="text" class="form-control"
+					id="pivaraNaziv">
+			</div>
+
+
+			<button ng-click="trazi()" type="button" class="btn btn-primary">Trazi</button>
+		</form>
+	</div>	
+
+<div class="row" ng-show="aktivnoIzmena">
+
+    <form>
+        <div class="form-group">
+            <label for="nazivP">Mesto</label>
+            <input ng-model="pivo.mesto" type="text" class="form-control" id="nazivP">
+        </div>
+        <div class="form-group">
+            <label for="vrstaP">Cena karte</label>
+            <input  ng-model="pivo.cena_karte" type="text" class="form-control" id="vrstaP">
+        </div>
+        <div class="form-group">
+            <label for="alkoholP">Vreme polaska</label>
+            <input  ng-model="pivo.vreme_polaska"  type="text" class="form-control" id="alkoholP">
+        </div>
+        <div class="form-group">
+            <label for="ibuP">Destinacija</label>
+            <input ng-model="pivo.destinacija" type="text" class="form-control" id="ibuP">
+        </div>
+        <div class="form-group">
+            <label for="kolicinaP">Prevoznik</label>
+            <input ng-model="pivo.prevoznikNaziv" type="text" class="form-control" id="kolicinaP">
+        </div>
+        <button type="button" class="btn btn-primary" ng-click="edit(pivo.id)">Izmeni</button>
+    </form>
+</div>
+
+	<br /> <br /> <br />
+	<div class="btn-group pull-right">
+		<button class="btn btn-primary" ng-click="nazad()" ng-disabled="pageNum == 0">Prethodna</button>
+		<button class="btn btn-primary" ng-click="napred()" ng-disabled="pageNum == totalPages - 1">Sledeca</button>
+	</div>
+	<table class="table table-striped table-bordered">
+		<thead>
+			<tr>
+				<th>Broj mesta</th>
+				<th>Cena karte</th>
+				<th>Vreme polaska</th>
+				<th>Destinacija</th>
+				<th>Prevoznik</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="k in piva">
+				<td>{{k.mesto}}</td>
+				<td>{{k.cena_karte}} </td>
+				<td>{{k.vreme_polaska}}</td>
+				<td>{{k.destinacija}} </td>
+				<td>{{k.prevoznikNaziv}}</td>
+				<td>
+					<button ng-click="obrisi(k.id)" class="btn btn-danger">Obrisi</button>
+					<button ng-click="izmeni(k.id)" class="btn btn-warning">Izmeni</button>
+					<button class="btn btn-warning" ng-click="change(k.id)">Izmeni na strani</button>
+					<button ng-disabled="k.kolicina <= 0" ng-click="kupi(k.id)" class="btn btn-primary">Kupi</button>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<hr>
+</div>
