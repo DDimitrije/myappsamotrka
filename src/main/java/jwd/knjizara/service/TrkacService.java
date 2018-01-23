@@ -14,6 +14,7 @@ public interface TrkacService {
 	void save(Trkac trkac);
 	void remove(Long id);
 	Page<Trkac> findByTrkaId( int pageNum, Long trkaId);
+	
 	Page<Trkac> pretraga(@Param("ime") String ime, 
 			@Param("prezime") String prezime, 
 			@Param("pol") String pol,

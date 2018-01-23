@@ -30,7 +30,7 @@ import jwd.knjizara.web.dto.ManifestacijaDTO;
 
 	
 @RestController
-@RequestMapping("/api/manifestacija")
+@RequestMapping("/api/manifestacije")
 public class ApiMenifestacijaController {
 		@Autowired
 		private ManifestacijaService manifestacijaService;
@@ -57,7 +57,7 @@ public class ApiMenifestacijaController {
 			
 			
 			
-			Page<Manifestacija> manifestacije = null;
+			Page<Manifestacija> manifestacije;
 			//(String naziv, Double minI, Double maxI, String manifestacijeraNaziv, Integer kolicina, int page
 			if(naziv != null || datumOdrzavanja != null || mestoOdrzavanja != null ) { //|| nazivPivare != null ||  kolicina != null) {
 				manifestacije = manifestacijaService.pretraga(naziv, datumOdrzavanja, mestoOdrzavanja, pageNum); //nazivPivare,  kolicina, pageNum); //nazivPivare,

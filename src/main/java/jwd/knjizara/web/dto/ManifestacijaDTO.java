@@ -1,6 +1,6 @@
 package jwd.knjizara.web.dto;
 
-import java.util.Date;
+
 
 import javax.persistence.Column;
 
@@ -8,7 +8,7 @@ public class ManifestacijaDTO {
 
 	private Long id;
 	private String naziv;
-	private Date datumOdrzavanja;
+	private String datumOdrzavanja;
 	private String mestoOdrzavanja;
 
 	private Long takmicenjaGodinaId;
@@ -29,10 +29,10 @@ public class ManifestacijaDTO {
 	public void setNaziv(String naziv) {
 		this.naziv = naziv;
 	}
-	public Date getDatumOdrzavanja() {
+	public String getDatumOdrzavanja() {
 		return datumOdrzavanja;
 	}
-	public void setDatumOdrzavanja(Date datumOdrzavanja) {
+	public void setDatumOdrzavanja(String datumOdrzavanja) {
 		this.datumOdrzavanja = datumOdrzavanja;
 	}
 	public String getMestoOdrzavanja() {

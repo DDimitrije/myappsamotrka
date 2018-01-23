@@ -20,8 +20,8 @@ public class TakmicenjaGodina {
 	@GeneratedValue
 	@Column
 	private Long id;
-//	@Column
-//	private String nazivTrke;
+	@Column
+	private String nazivTrke;
 //	@Column
 //	private Date datum;
 	
@@ -39,6 +39,14 @@ public class TakmicenjaGodina {
 		this.id = id;
 	}
 	
+	
+	
+	public String getNazivTrke() {
+		return nazivTrke;
+	}
+	public void setNazivTrke(String nazivTrke) {
+		this.nazivTrke = nazivTrke;
+	}
 	public List<Manifestacija> getManifestacije() {
 		return manifestacije;
 	}

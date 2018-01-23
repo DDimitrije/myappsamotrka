@@ -6,7 +6,7 @@ import java.util.List;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 
-import jwd.knjizara.model.Pivara;
+
 import jwd.knjizara.model.TakmicenjaGodina;
 
 import jwd.knjizara.web.dto.TakmicenjaGodinaDTO;

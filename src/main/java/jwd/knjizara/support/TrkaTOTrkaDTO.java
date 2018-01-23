@@ -19,8 +19,8 @@ public class TrkaTOTrkaDTO implements Converter<Trka, TrkaDTO> {
 	public TrkaDTO convert(Trka trka) {
 		TrkaDTO trkaDTO = new TrkaDTO();
 		trkaDTO.setId(trka.getId());
-//		trkaDTO.setNaziv(trka.getNaziv());
-//		trkaDTO.setPIB(trka.getPIB());
+		trkaDTO.setDuzinaStaze(trka.getDuzinaStaze());
+		trkaDTO.setKategorija(trka.getKategorija());
 //		trkaDTO.setDrzava(trka.getDrzava());
 		return trkaDTO;
 		}

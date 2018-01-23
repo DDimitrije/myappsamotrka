@@ -1,6 +1,6 @@
 package jwd.knjizara.web.dto;
 
-import javax.persistence.Column;
+
 
 public class TrkaDTO {
 	

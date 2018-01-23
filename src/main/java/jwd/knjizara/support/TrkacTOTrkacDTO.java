@@ -26,6 +26,7 @@ public class TrkacTOTrkacDTO implements Converter<Trkac, TrkacDTO> {
 		dto.setKlub(source.getKlub());
 		
 		
+		
 		dto.setTrkaId(source.getTrka().getId());
 		//dto.setTrkaNaziv(source.getTrka().getManifestacija().getNaziv());
 		// dto.setVrstaPivaId(source.getVrstaPiva().getId());
