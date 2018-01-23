@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -27,8 +28,8 @@ public class Trka {
 	private String kategorija;
 
 	
-//	@ManyToOne(fetch=FetchType.EAGER)
-//	private Manifestacija manifestacija;
+	@ManyToOne(fetch=FetchType.EAGER)
+	private Manifestacija manifestacija;
 	//private TakmicenjaGodina takmicenjaGodina;
 	
 	//Trkaci
@@ -75,15 +76,15 @@ public Long getId() {
 //	}
 	
 	
-//	public Manifestacija getManifestacija() {
-//		return manifestacija;
-//	}
-//	public void setManifestacija(Manifestacija manifestacija) {
-//		this.manifestacija = manifestacija;
-//		if(manifestacija!=null && !manifestacija.getTrke().contains(this)){
-//			manifestacija.getTrke().add(this);
-//		}
-//	}
+	public Manifestacija getManifestacija() {
+		return manifestacija;
+	}
+	public void setManifestacija(Manifestacija manifestacija) {
+		this.manifestacija = manifestacija;
+		if(manifestacija!=null && !manifestacija.getTrke().contains(this)){
+			manifestacija.getTrke().add(this);
+		}
+	}
 	
 	public List<Trkac> getTrkaci() {
 		return trkaci;

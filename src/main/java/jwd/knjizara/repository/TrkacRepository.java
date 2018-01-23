@@ -30,7 +30,7 @@ Page<Trkac> findByTrkaId(Long mestoId, Pageable pageRequest);
 	@Query("SELECT k FROM Trkac k WHERE "
 			+ "(:ime IS NULL or k.ime like :ime ) AND "
 			+ "(:prezime IS NULL OR k.prezime  like :prezime ) AND "
-			+ "(:pol IS NULL OR k.pol = :pol) AND "
+			+ "(:pol IS NULL OR k.pol like :pol) AND "
 			+ "(:velicinaMajce IS NULL OR k.velicinaMajce  like :velicinaMajce ) AND "
 			+ "(:adresa IS NULL OR k.adresa  like :adresa ) AND "
 			+ "(:grad IS NULL OR k.grad  like :grad ) AND "

@@ -18,10 +18,10 @@ public interface ManifestacijaRepository extends JpaRepository<Manifestacija, Lo
 	
 	Page<Manifestacija> findByTakmicenjaGodinaId(Long mestoId, Pageable pageRequest);
 	
-	@Query("SELECT k FROM Manifestacije k WHERE "
+	@Query("SELECT k FROM Manifestacija k WHERE "
 			+ "(:naziv IS NULL or k.naziv like :naziv ) AND "
 			+ "(:datumOdrzavanja IS NULL OR k.datumOdrzavanja  like :datumOdrzavanja ) AND "
-			+ "(:mestoOdrzavanja IS NULL OR k.mestoOdrzavanja = :mestoOdrzavanja)"
+			+ "(:mestoOdrzavanja IS NULL OR k.mestoOdrzavanja like :mestoOdrzavanja)"
 			)
 
 	Page<Manifestacija> pretraga(

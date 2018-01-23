@@ -1,12 +1,18 @@
 package jwd.knjizara.service;
 
+import javax.transaction.Transactional;
+
 import org.springframework.data.domain.Page;
 //import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Service;
 
 import jwd.knjizara.model.Manifestacija;
 import jwd.knjizara.model.Trkac;
 
+
+@Service
+@Transactional
 public interface TrkacService {
 	
 	Page<Trkac> findAll(int pageNum);

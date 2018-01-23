@@ -1,14 +1,18 @@
 package jwd.knjizara.service.impl;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-
+import org.springframework.stereotype.Service;
 
 import jwd.knjizara.model.Trkac;
 import jwd.knjizara.repository.TrkacRepository;
 import jwd.knjizara.service.TrkacService;
 
+@Service
+@Transactional
 public class JpaTrkacServiceImpl implements TrkacService {
 		
 		@Autowired
