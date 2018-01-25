@@ -46,7 +46,7 @@ public class ApiMenifestacijaController {
 		@RequestMapping(method=RequestMethod.GET)
 		public ResponseEntity<List<ManifestacijaDTO>> get(
 				@RequestParam(required=false) String naziv,
-				@RequestParam(required=false) Date datumOdrzavanja,
+				@RequestParam(required=false) String datumOdrzavanja,
 				@RequestParam(required=false) String mestoOdrzavanja,
 //				@RequestParam(required=false) Double maxI,
 //				//@RequestParam(required=false) Integer maxKolicina,

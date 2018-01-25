@@ -3,6 +3,7 @@ package jwd.knjizara.repository;
 import java.util.Date;
 
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -11,24 +12,30 @@ import org.springframework.stereotype.Repository;
 
 
 import jwd.knjizara.model.Manifestacija;
+import jwd.knjizara.model.Trka;
 
 
 @Repository
 public interface ManifestacijaRepository extends JpaRepository<Manifestacija, Long> { 
 	
 	Page<Manifestacija> findByTakmicenjaGodinaId(Long mestoId, Pageable pageRequest);
+	Page<Trka> findByManifestacijaId(Long mestoId, Pageable pageRequest);
 	
 	@Query("SELECT k FROM Manifestacija k WHERE "
 			+ "(:naziv IS NULL or k.naziv like :naziv ) AND "
 			+ "(:datumOdrzavanja IS NULL OR k.datumOdrzavanja  like :datumOdrzavanja ) AND "
-			+ "(:mestoOdrzavanja IS NULL OR k.mestoOdrzavanja like :mestoOdrzavanja)"
+			+ "(:mestoOdrzavanja IS NULL OR k.mestoOdrzavanja like :mestoOdrzavanja) "
 			)
 
 	Page<Manifestacija> pretraga(
 			@Param("naziv") String naziv, 
-			@Param("datumOdrzavanja") Date datumOdrzavanja,
+			@Param("datumOdrzavanja") String datumOdrzavanja,
 			@Param("mestoOdrzavanja") String mestoOdrzavanja,
 			Pageable pageRequest);
 	
 
+	
+
+	
+	
 }

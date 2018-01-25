@@ -8,6 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import jwd.knjizara.model.Manifestacija;
 import jwd.knjizara.model.TakmicenjaGodina;
 import jwd.knjizara.model.Trka;
 import jwd.knjizara.model.Trkac;
@@ -15,5 +16,13 @@ import jwd.knjizara.model.Trkac;
 @Repository
 public interface TrkaRepository extends JpaRepository<Trka, Long> {
 
+	Page<Trka> findByTrkaId(Long trkaId, PageRequest pageRequest);
+	//Page<Manifestacija> findByTakmicenjaGodinaId(int pageNum, Long takmicenjaGodinaId);//pivaraID
+
+	Page<Trka> pretraga(
+			@Param("duzinaStaze") String duzinaStaze, 
+			@Param("kategorija") String kategorija, 
+			PageRequest pageRequest);
+	
 }
 

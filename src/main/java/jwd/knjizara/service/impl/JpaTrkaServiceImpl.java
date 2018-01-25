@@ -1,13 +1,23 @@
 package jwd.knjizara.service.impl;
 
 
+import java.util.Date;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
+
+import jwd.knjizara.model.Manifestacija;
+import jwd.knjizara.model.TakmicenjaGodina;
 import jwd.knjizara.model.Trka;
+import jwd.knjizara.repository.ManifestacijaRepository;
+import jwd.knjizara.repository.TakmicenjaGodinaRepository;
 import jwd.knjizara.repository.TrkaRepository;
+import jwd.knjizara.service.TakmicenjaGodinaService;
 import jwd.knjizara.service.TrkaService;
 
 
@@ -16,6 +26,8 @@ import jwd.knjizara.service.TrkaService;
 public class JpaTrkaServiceImpl implements TrkaService {
 	@Autowired
 	private TrkaRepository trkaRepository;
+	@Autowired
+	private ManifestacijaRepository manifestacijaRepository;
 
 	@Override
 	public List<Trka> findAll() {
@@ -36,4 +48,25 @@ public class JpaTrkaServiceImpl implements TrkaService {
 	public void remove(Long id) {
 		trkaRepository.delete(id);
 	}
+	
+	@Override
+	public Page<Trka> findByManifestacijaId(int pageNum, Long manifestacijaId) {
+
+		return manifestacijaRepository.findByManifestacijaId(manifestacijaId, new PageRequest(pageNum, 5));
+	}
+
+	@Override
+	public Page<Trka> pretraga(String duzinaStaze, String kategorija,  int page) {																																																																																				// nazivPivare
+//		if (naziv != null) {
+//			naziv = "%" + naziv + "%";
+//		}
+		return trkaRepository.pretraga(duzinaStaze, kategorija,  new PageRequest(page, 5));
+	}
+
+	@Override
+	public Page<Trka> findByTrkaId(int pageNum, Long trkaId) {
+
+		return trkaRepository.findByTrkaId(trkaId, new PageRequest(pageNum, 5));
+	}
+	
 }

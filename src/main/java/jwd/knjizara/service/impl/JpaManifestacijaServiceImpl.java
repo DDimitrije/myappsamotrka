@@ -10,6 +10,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import jwd.knjizara.model.Manifestacija;
+import jwd.knjizara.model.Trka;
 import jwd.knjizara.repository.ManifestacijaRepository;
 import jwd.knjizara.service.ManifestacijaService;
 
@@ -47,16 +48,13 @@ public class JpaManifestacijaServiceImpl implements ManifestacijaService {
 	}
 
 	@Override
-	public Page<Manifestacija> pretraga(String naziv, Date datumOdrzavanja, String mestoOdrzavanja,  int page) {// String
-																														// nazivPivare,
-																										// Strin																												// nazivPivare
+	public Page<Manifestacija> pretraga(String naziv, String datumOdrzavanja, String mestoOdrzavanja,  int page) {
+																																																																																			// nazivPivare
 		if (naziv != null) {
 			naziv = "%" + naziv + "%";
 		}
-		return manifestacijaRepository.pretraga(naziv, datumOdrzavanja, mestoOdrzavanja,  new PageRequest(page, 5));// nazivPivare
-																											// nazivPivare,
-																											// kolicina
-																											// ,
+		return manifestacijaRepository.pretraga(naziv, datumOdrzavanja, mestoOdrzavanja,  new PageRequest(page, 5));
+																																																				// kolicina																										
 	}
 
 	// dugme nestalo

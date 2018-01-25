@@ -11,8 +11,8 @@ import jwd.knjizara.model.Manifestacija;
 import jwd.knjizara.model.Trkac;
 
 
-@Service
-@Transactional
+//@Service
+//@Transactional
 public interface TrkacService {
 	
 	Page<Trkac> findAll(int pageNum);
