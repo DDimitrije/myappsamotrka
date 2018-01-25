@@ -7,9 +7,7 @@ public class TrkaDTO {
 		private Long id;
 		private String duzinaStaze;
 		private String kategorija;
-//		private Double IBU;
-//		private Integer kolicina;
-//		private Double procenat_alkohola;
+
 		//private String manifestacijaNaziv;
 		private Long manifestacijaId;
 		

@@ -16,13 +16,40 @@ import jwd.knjizara.model.Trkac;
 @Repository
 public interface TrkaRepository extends JpaRepository<Trka, Long> {
 
-	Page<Trka> findByTrkaId(Long trkaId, PageRequest pageRequest);
+	Page<Trka> findByManifestacijaId(Long mestoId, Pageable pageRequest);
+	//Page<Trka> findByTrkaId(Long mestoId, Pageable pageRequest);
+	Page<Trka> findByTrkaId(Long trkaId, Pageable pageRequest);
+	//trkaRepository.findByTrkaId(trkaId, new PageRequest(pageNum, 5));
+	
 	//Page<Manifestacija> findByTakmicenjaGodinaId(int pageNum, Long takmicenjaGodinaId);//pivaraID
 
+	@Query("SELECT k FROM Trka k WHERE "
+	+ "(:duzinaStaze IS NULL or k.duzinaStaze like :duzinaStaze ) AND "
+	+ "(:kategorija IS NULL OR k.kategorija  like :kategorija ) "
+	)
+	
+	
 	Page<Trka> pretraga(
 			@Param("duzinaStaze") String duzinaStaze, 
 			@Param("kategorija") String kategorija, 
-			PageRequest pageRequest);
+			Pageable pageRequest);
+
 	
+	
+	
+//	Page<Manifestacija> findByTakmicenjaGodinaId(Long mestoId, Pageable pageRequest);
+//	Page<Trka> findByManifestacijaId(Long mestoId, Pageable pageRequest);
+//	
+//	@Query("SELECT k FROM Manifestacija k WHERE "
+//			+ "(:naziv IS NULL or k.naziv like :naziv ) AND "
+//			+ "(:datumOdrzavanja IS NULL OR k.datumOdrzavanja  like :datumOdrzavanja ) AND "
+//			+ "(:mestoOdrzavanja IS NULL OR k.mestoOdrzavanja like :mestoOdrzavanja) "
+//			)
+//
+//	Page<Manifestacija> pretraga(
+//			@Param("naziv") String naziv, 
+//			@Param("datumOdrzavanja") String datumOdrzavanja,
+//			@Param("mestoOdrzavanja") String mestoOdrzavanja,
+//			Pageable pageRequest);
 }
 
