@@ -1,10 +1,7 @@
 package jwd.knjizara.web.controller;
 
 
-import java.util.Date;
 import java.util.List;
-
-import javax.persistence.Column;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -46,7 +43,6 @@ public class ApiTrkaController {
 		
 		@RequestMapping(method=RequestMethod.GET)
 		public ResponseEntity<List<TrkaDTO>> get(
-				//@RequestParam(required=false) String naziv,
 				@RequestParam(required=false) String duzinaStaze,
 				@RequestParam(required=false) String kategorija,
 //				@RequestParam(required=false) Double maxI,
@@ -58,17 +54,12 @@ public class ApiTrkaController {
 			
 			
 			Page<Trka> trke;
-			//(String naziv, Double minI, Double maxI, String trkeraNaziv, Integer kolicina, int page
-			if(duzinaStaze != null || kategorija != null ) { //|| nazivPivare != null ||  kolicina != null) {
-				trke = trkaService.pretraga(duzinaStaze, kategorija, pageNum); //nazivPivare,  kolicina, pageNum); //nazivPivare,
+			
+			if(duzinaStaze != null || kategorija != null ) {
+				trke = trkaService.pretraga(duzinaStaze, kategorija, pageNum); 
 			//Dugme Nestalo
 			}else{
 				trke = trkaService.findAll(pageNum);
-//			if(proveraNestalo == true){
-//					trke = trkaService.nestalo(pageNum);
-//				}else{
-//				trke = trkaService.findAll(pageNum);
-//			}
 		}	
 			HttpHeaders headers = new HttpHeaders();
 			headers.add("totalPages", Integer.toString(trke.getTotalPages()) );

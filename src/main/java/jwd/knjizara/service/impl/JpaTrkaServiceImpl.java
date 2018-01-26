@@ -28,8 +28,7 @@ import jwd.knjizara.service.TrkaService;
 public class JpaTrkaServiceImpl implements TrkaService {
 	@Autowired
 	private TrkaRepository trkaRepository;
-	@Autowired
-	private ManifestacijaRepository manifestacijaRepository;
+	
 
 //	@Override
 //	public List<Trka> findAll() {
@@ -56,40 +55,33 @@ public class JpaTrkaServiceImpl implements TrkaService {
 	}
 	
 	@Override
+	public Page<Trka> findByTrkaId(int pageNum, Long trkaId) {
+		return trkaRepository.findByTrkaId(trkaId, new PageRequest(pageNum, 5));	
+	}	
+	
+	@Override
 	public Page<Trka> findByManifestacijaId(int pageNum, Long manifestacijaId) {
 
-		return manifestacijaRepository.findByManifestacijaId(manifestacijaId, new PageRequest(pageNum, 5));
+		return trkaRepository.findByManifestacijaId(manifestacijaId, new PageRequest(pageNum, 5));
 	}
 
 	@Override
-	public Page<Trka> pretraga(String duzinaStaze, String kategorija,  int page) {																																																																																				// nazivPivare
-//		if (naziv != null) {
-//			naziv = "%" + naziv + "%";
-//		}
+	public Page<Trka> pretraga(String duzinaStaze, String kategorija,  int page) {	
 		return trkaRepository.pretraga(duzinaStaze, kategorija,  new PageRequest(page, 5));
 	}
 
-//	@Override
-//	public Page<Trka> findByTrkaId(int pageNum, Long trkaId) {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
 
-	@Override
-	public Page<Trka> findByTrkaId(int pageNum, Long trkaId) {
-
-		return trkaRepository.findByTrkaId(trkaId, new PageRequest(pageNum, 5));	
-	}	
+	
 	
 	
 
 //	@Override
 //	public Page<Manifestacija> pretraga(String naziv, String datumOdrzavanja, String mestoOdrzavanja,  int page) {
-//																																																																																			// nazivPivare
+//																										
 //		if (naziv != null) {
 //			naziv = "%" + naziv + "%";
 //		}
-//		return manifestacijaRepository.pretraga(naziv, datumOdrzavanja, mestoOdrzavanja,  new PageRequest(page, 5));																																																			// kolicina																										
+//		return manifestacijaRepository.pretraga(naziv, datumOdrzavanja, mestoOdrzavanja,  new PageRequest(page, 5));	
 //	}
 	
 }

@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+
 import jwd.knjizara.model.Manifestacija;
 import jwd.knjizara.model.TakmicenjaGodina;
 import jwd.knjizara.service.ManifestacijaService;
@@ -47,17 +48,17 @@ public class ApiTakmicenjaGodinaController {// pivarai
 		if (takmicenjaGodina == null) {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
-
 		return new ResponseEntity<>(toDTO.convert(takmicenjaGodina), HttpStatus.OK);
 	}
 
+	
 	@RequestMapping(value = "/{takmicenjaGodinaId}/manifestacije")
 	public ResponseEntity<List<ManifestacijaDTO>> manifestacijaTakmicenjaGodina(@PathVariable Long takmicenjaGodinaId,
 			@RequestParam(defaultValue = "0") int pageNum) {
-		Page<Manifestacija> manifestacija = manifestacijaService.findByTakmicenjaGodinaId(pageNum, takmicenjaGodinaId);
+		Page<Manifestacija> manifestacije = manifestacijaService.findByTakmicenjaGodinaId(pageNum, takmicenjaGodinaId);
 
 		HttpHeaders headers = new HttpHeaders();
-		headers.add("totalPages", Integer.toString(manifestacija.getTotalPages()));
-		return new ResponseEntity<>(toManifestacijaDTO.convert(manifestacija.getContent()), headers, HttpStatus.OK);
+		headers.add("totalPages", Integer.toString(manifestacije.getTotalPages()));
+		return new ResponseEntity<>(toManifestacijaDTO.convert(manifestacije.getContent()), headers, HttpStatus.OK);
 	}
 }

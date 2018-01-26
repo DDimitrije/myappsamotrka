@@ -38,4 +38,7 @@ public class ManifestacijaDTOTOManifestacija implements Converter<ManifestacijaD
 		
 		return manifestacija;
 	}
+	
+	
+	
 }

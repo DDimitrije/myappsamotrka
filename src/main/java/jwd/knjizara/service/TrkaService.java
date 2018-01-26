@@ -34,13 +34,14 @@ public interface TrkaService {
 	void save(Trka trka);
 	void remove(Long id);
 	Page<Trka> findByTrkaId(int pageNum, Long trkaId);// pivaraID
+	Page<Trka> findByManifestacijaId(int pageNum, Long manifestacijaId);
 	
 	Page<Trka> pretraga(@Param("duzinaStaze") String duzinaStaze, 
 					@Param("kategorija") String kategorija, 
 					int page);
 	// Page<Manifestacija> pretraga(String naziv, Date datumOdrzavanja, String
 	// mestoOdrzavanja, int page);
-	Page<Trka> findByManifestacijaId(int pageNum, Long manifestacijaId);
+	
 		
 	//Page<Trka> findByTrkaId(int pageNum, Long trkaId);
 

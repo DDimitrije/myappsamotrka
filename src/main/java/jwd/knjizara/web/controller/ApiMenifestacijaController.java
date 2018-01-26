@@ -58,17 +58,12 @@ public class ApiMenifestacijaController {
 			
 			
 			Page<Manifestacija> manifestacije;
-			//(String naziv, Double minI, Double maxI, String manifestacijeraNaziv, Integer kolicina, int page
-			if(naziv != null || datumOdrzavanja != null || mestoOdrzavanja != null ) { //|| nazivPivare != null ||  kolicina != null) {
-				manifestacije = manifestacijaService.pretraga(naziv, datumOdrzavanja, mestoOdrzavanja, pageNum); //nazivPivare,  kolicina, pageNum); //nazivPivare,
+			
+			if(naziv != null || datumOdrzavanja != null || mestoOdrzavanja != null ) { 
+				manifestacije = manifestacijaService.pretraga(naziv, datumOdrzavanja, mestoOdrzavanja, pageNum); 
 			//Dugme Nestalo
 			}else{
 				manifestacije = manifestacijaService.findAll(pageNum);
-//			if(proveraNestalo == true){
-//					manifestacije = manifestacijaService.nestalo(pageNum);
-//				}else{
-//				manifestacije = manifestacijaService.findAll(pageNum);
-//			}
 		}	
 			HttpHeaders headers = new HttpHeaders();
 			headers.add("totalPages", Integer.toString(manifestacije.getTotalPages()) );
@@ -101,18 +96,6 @@ public class ApiMenifestacijaController {
 					HttpStatus.CREATED);
 		}
 		
-//		@RequestMapping(method=RequestMethod.POST, value="/{id}/kupovina")
-//		public ResponseEntity<KupovinaManifestacijaDTO> buy(@PathVariable Long id){
-//			
-//			KupovinaManifestacija k = kupovinaManifestacijaService.buyABook(id);
-//			
-//			if(k == null) {
-//				return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-//			}else {
-//				return new ResponseEntity<>(toKupovinaDTO.convert(k), HttpStatus.CREATED);
-//			}
-//			
-//		}
 		
 		@RequestMapping(method=RequestMethod.PUT, value="/{id}")
 		public ResponseEntity<ManifestacijaDTO> edit(
